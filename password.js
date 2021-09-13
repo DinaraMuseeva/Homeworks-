@@ -1,1 +1,3 @@
-const password =122334
+const password = 1234;
+
+const password = "fhhfjdkdk";
