@@ -1,0 +1,145 @@
+*{
+	padding:0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+
+}
+:focus, :active{outline: none;}
+a:focus, a:active{outline: none;}
+nav, footer, header,  aside {display: block;}
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+
+	margin-left: 20px;
+}
+input,button, textarea {font-family: inherit;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner{padding: 0; border: 0;}
+a, a:visited{text-decoration: none;}
+ui li{list-style: none;}
+img{vertical-align: top;}
+h1,h2,h3,h4,h5.h6{font-size: inherit; font-weight: 400;}
+
+.section{
+	background-color:lightblue;
+} 
+
+.container{
+	max-width: 1200px;
+	padding: 30px 50px;
+
+	
+} 
+
+.header{
+	display: flex;
+	justify-content: space-between;
+	padding: 15px 0;
+	align-items: center;
+	margin-bottom: 50px;
+	
+}
+
+.header__logo {
+	font-size: 20px;
+	font-weight: 700;
+	font-family:Verdana, Geneva, Tahoma, sans-serif;
+	color: darkcyan;
+}
+
+.header__nav{
+	display: flex;
+	justify-content: space-between;
+} 
+
+.header__link{
+	font-size: 15px;
+	font-family:Verdana, Geneva, Tahoma, sans-serif;
+	text-transform: uppercase;
+	margin-right: 20px;
+	color: darkcyan;
+	opacity: .75;
+    transition: opacity .1s linear;
+
+} 
+.header__link:last-child{
+	margin-right: 0;
+}
+
+.header__link:hover{
+	opacity: 1;
+
+}
+
+.content {
+	text-align: center;
+	margin-bottom: 50px;
+
+}
+
+.content__title{
+	font-size: 48px;
+	font-weight: 700;
+	line-height: 1.2;
+	margin-bottom: 15px;
+}
+.content__title:after{
+content: "";
+width: 80px;
+height: 4px;
+display: flex;
+margin: 20px auto;
+color:darkcyan; ;
+
+}
+
+.content__subtitle{
+	font-size: 38px;
+	font-style: italic;
+	font-weight: 500;
+	margin-bottom: 50px;
+} 
+
+.content__img{
+	box-shadow: 0 15px 65px rgb(15 16 16 / 15%);
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 85px;
+} 
+.content__img img{
+	width: 100%;
+}
+.content__button{
+	display: inline-block;
+	background-color:darkcyan;
+	color:#fff; 
+	font-size: 18px;
+	border: 1px solid darkcyan;
+	height: 44px;
+    line-height: 44px;
+    border-radius: 20px;
+    padding: 0 40px;
+	letter-spacing: 2.8px;
+	box-shadow: 0px 5px 1px rgb(0 0 0);
+	font-family:Verdana, Geneva, Tahoma, sans-
+}
+.content__button a{
+	color:inherit;
+}
+	.content__button:hover{
+background-color: #fff;
+color: black;
+	}
