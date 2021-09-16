@@ -22,14 +22,14 @@ html,body{
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
 
-	margin-left: 20px;
+	
 }
 input,button, textarea {font-family: inherit;}
 input::-ms-clear{display: none;}
 button{cursor: pointer;}
 button::-moz-focus-inner{padding: 0; border: 0;}
 a, a:visited{text-decoration: none;}
-ui li{list-style: none;}
+ul li{list-style: none;}
 img{vertical-align: top;}
 h1,h2,h3,h4,h5.h6{font-size: inherit; font-weight: 400;}
 
@@ -41,7 +41,6 @@ h1,h2,h3,h4,h5.h6{font-size: inherit; font-weight: 400;}
 	max-width: 1200px;
 	padding: 30px 50px;
 
-	
 } 
 
 .header{
@@ -60,12 +59,12 @@ h1,h2,h3,h4,h5.h6{font-size: inherit; font-weight: 400;}
 	color: darkcyan;
 }
 
-.header__nav{
+.nav{
 	display: flex;
 	justify-content: space-between;
 } 
 
-.header__link{
+.nav__link{
 	font-size: 15px;
 	font-family:Verdana, Geneva, Tahoma, sans-serif;
 	text-transform: uppercase;
@@ -75,11 +74,12 @@ h1,h2,h3,h4,h5.h6{font-size: inherit; font-weight: 400;}
     transition: opacity .1s linear;
 
 } 
-.header__link:last-child{
+
+.nav__link:last-child{
 	margin-right: 0;
 }
 
-.header__link:hover{
+.nav__link:hover{
 	opacity: 1;
 
 }
@@ -97,14 +97,16 @@ h1,h2,h3,h4,h5.h6{font-size: inherit; font-weight: 400;}
 	margin-bottom: 15px;
 }
 .content__title:after{
+
 content: "";
+display: block;
 width: 80px;
 height: 4px;
-display: flex;
+
 margin: 20px auto;
 color:darkcyan; ;
 
-}
+}  
 
 .content__subtitle{
 	font-size: 38px;
