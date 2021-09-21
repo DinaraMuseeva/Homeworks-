@@ -53,7 +53,7 @@ main{
 	line-height: 46.88px;
 	font-weight: 400;
 	text-align: center;
-	margin-bottom: 65px;
+	
 } 
 .header__title{
 	text-align: left;
@@ -63,16 +63,20 @@ main{
 	text-align: left;
 	margin-bottom: 20px;
 }
+.services__title, .team__title, .questions__title{
+	margin-bottom: 75px;
+}
 .button{
 	background: #B5CA00;border-radius: 4px;padding: 13px 90px;
 	color: #fff;
 	font-weight: 700;line-height: 21.09px;
+	display: inline-block;
 }
 .button-cnt{
 	padding: 13px 20px;
 }
 .section-photo{
-	max-width: 1440px;background: url("../dinara/img/header-photo.png" ) right no-repeat ;
+	background: url("../dinara/img/header-photo.png" ) right no-repeat ;
 	height: 532px;margin-bottom: 53px;
 }
 .section-color{
@@ -103,16 +107,16 @@ main{
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	margin-bottom: 90px;
+	
 } 
 .card__item {
-	width: 25%;
-	padding-right: 76px;
+	width: 20%;
+	margin-bottom: 90px;
 }
 .card__item-team{
-	padding-right: 170px;
-	width: 33.333%;
-	margin-right: -95px;
+	
+	width: 25%;
+	
 }
 .card__item:last-child{
 	padding-right: 30px;
@@ -207,13 +211,13 @@ main{
 }
 /* Questions */
 .questions{
-	margin-bottom: 70px;
+	padding-bottom: 70px;
 }
 .questions__item{
 	margin-bottom: 35px;
 } 
 .questions__item:last-child{
-	margin-bottom: 70px;
+	margin-bottom: 0;
 }
 .questions__subtitle{
 	font-size: 23px;
@@ -226,7 +230,7 @@ main{
 } 
 .questions__button{
 	text-align: center;
-	margin: 70px 0;
+	
 }
 
 @media (max-width: 1250px){
