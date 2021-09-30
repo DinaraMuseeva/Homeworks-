@@ -1,15 +1,12 @@
 "use strict"
 
-let UserName = prompt("Как тебя зовут?", " ");
-let UserNickname = prompt("Твой никнейм?", " ");
-let UserAge = prompt("Сколько тебе лет?", " ");
+const UserName = prompt("Как тебя зовут?", " ");
+const UserNickname = prompt("Твой никнейм?", " ");
+const UserAge = prompt("Сколько тебе лет?", " ");
 
 
-// alert(`Тебя зовут ${UserName}`);
-// alert(`Тебе ${UserAge} лет`);
-// alert(`Твой никнейм ${UserNickname}`);
+alert(`Тебя зовут ${UserName}, Тебе ${UserAge} лет, Твой никнейм ${ UserNickname }`);
 
 
-console.log(`Тебя зовут ${UserName}`);
-console.log(`Тебе ${UserAge} лет`);
-console.log(`Твой никнейм ${UserNickname}`);
+
+console.log(`Тебя зовут ${UserName}, Тебе ${UserAge} лет, Твой никнейм ${UserNickname}`);
