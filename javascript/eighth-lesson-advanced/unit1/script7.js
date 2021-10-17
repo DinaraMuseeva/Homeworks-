@@ -8,7 +8,7 @@
 
 function ModOfK(m, n, k) {
 	for (; n < m; n++) {
-		if (n % k == 1)continue;
+		if (n % k === 1)continue;
 		alert(n);
 	}
 }
@@ -16,7 +16,7 @@ function ModOfK(m, n, k) {
 
 function ModOfK(m, n, k) {
 	do{ 
-		if( n % k == 0)
+		if( n % k === 0)
 		alert (n);
 		n++
 	}while (n < m);
@@ -27,7 +27,7 @@ function ModOfK(m, n, k) {
 
 function ModOfK(m, n, k) {
 	while (n < m) {
-		if (n % 2 == 0) 
+		if (n % k === 0) 
 		alert(n);
 		n++
 	}

@@ -7,7 +7,7 @@
 // 	Важно: мы можем ходить по строке в цикле так же, как по массиву, обращаясь отдельно к каждому символу по индексу.Пример на прикрепленном фото.
 
 
-
+/*
 const str = prompt("Введите слово Палиндром");
 
 function checkIsPalindrom(str) {
@@ -19,11 +19,21 @@ function checkIsPalindrom(str) {
 	   return "ПАЛИНДРОМ";
    }
 
+//console.log(checkIsPalindrom(str));
+	*/		
+
+const str = prompt("Введите слово Палиндром");
+
+
+function checkIsPalindrom(str) {
+	let i = 0;
+	let j = str.length - 1;
+	while (++i < j--);{
+		if (str[i] !== str[j])
+			return "НУ ТЫ И НЕУДАЧНИК";
+	}
+	return "ПАЛИНДРОМ";
+	
+}
+
 console.log(checkIsPalindrom(str));
-			
-
-
-
-
-
-

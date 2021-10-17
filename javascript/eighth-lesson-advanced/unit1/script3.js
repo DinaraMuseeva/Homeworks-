@@ -30,6 +30,6 @@ function getEvenNumbersFrom0to10() {
 }
  //getEvenNumbersFrom0to10();
 
-//вывести числа от m до n (при условии что m > n)
+
 
 ;

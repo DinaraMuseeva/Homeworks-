@@ -5,7 +5,7 @@ let m = prompt('m?');
 let k = prompt('k?');
 
 	// вывести true, если n и m равны, иначе false
-if ( n == m){
+if ( n === m){
 	alert (true);
 }else {
 	alert (false);

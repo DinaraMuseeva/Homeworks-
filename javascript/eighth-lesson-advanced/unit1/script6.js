@@ -1,8 +1,8 @@
 "use strict"
 //вывести числа от m до n(при условии что m > n)
 
-// let n = prompt('n?');
-// let m = prompt('m?');
+ let n = prompt('n?');
+ let m = prompt('m?');
 
 
 function isMBiggerThanN(m, n) {

@@ -1,8 +1,8 @@
 "use strict"
 // вывести числа от n до m (при условии что n < m)
 
-// let n = prompt ('n?');
-// let m = prompt('m?');
+let n = prompt ('n?');
+ let m = prompt('m?');
 
 function  isNLesserThanM(n, m) {
 	for (; n < m; n++) { 

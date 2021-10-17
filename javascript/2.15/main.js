@@ -53,7 +53,7 @@ function getMin ( a,b) {
 	}
 }
 let result = getMin(2, 5);
-alert (result);
+//alert (result);
 
 // Напишите функцию pow(x, n), которая возвращает x в степени n.Иначе говоря, умножает x на себя n раз и возвращает результат.
 
@@ -67,4 +67,4 @@ function pow (x,n) {
 }
 
 let result = pow(x,n);
-alert (result);
+//alert (result);
