@@ -2,32 +2,33 @@
 
 
 const  user = {
-	name: "Динара",
-	surname: " Мусеева",
-	birthday: "1996-01-19",
-	email: "museeva@bk.ru",
+name: "Динара",
+surname: "Мусеева",
+birthday: "1996-01-19",
+email: "museeva@bk.ru",
 
-	user_dog: {
+	userDog: {
 		breed: "French Bulldog",
-		fur_color: "Black",
+		furColor: "Black",
 		character: "noisy",
-		dogs_birthday: "2003-09-09",
+		dogsBirthday: "2003-09-09",
 
 	},
 
 	sayFullName() {
-		alert(this.name + this.surname);
+		alert(`${this.name} ${this.surname}`);
 	},
 
 	sayInformationAboutTheDog() {
-		alert(`Порода: ${user.user_dog['breed']} ,
-Цвет шерстки: ${user.user_dog['fur_color']},
-Характер: ${user.user_dog['character']},
-Дата рождения : ${user.user_dog['dogs_birthday']}`);
+		alert(`Порода: ${this.userDog.breed} ,
+Цвет шерстки: ${this.userDog.furColor},
+Характер: ${this.userDog.character},
+Дата рождения : ${this.userDog.dogsBirthday}`);
 	},
 
-	changeDogsBreed() {
-		user.user_dog.breed = "dachshund";
+	changeDogsBreed(breed) {
+		this.userDog.breed = breed;
+	
 	},
 
 
@@ -35,7 +36,7 @@ const  user = {
 //user.sayFullName(),user.sayInformationAboutTheDog(),user.changeDogsBreed();
 
 
-
+/*
 
 //КЛОНИРОВАНИЕ
 
@@ -52,9 +53,9 @@ let newUser = JSON.parse(JSON.stringify(user)); // не копируются ф�
 
 
 let newUser = _.cloneDeep (user); 
+*/
 
-
-
+/*
 
 // Выведите фамилию пользователя тремя способами - через точку, через скобки[] со строкой внутри, и через[] с переменной внутри
 
@@ -85,19 +86,19 @@ function makeUser(name, surname, birthday, email) {
 const newUser = makeUser('Boris', 'Borisovih', '1976-09-04', 'boriska@mail.ru');
 
 
-function makeDog(breed, fur_color, character, dogs_birthday) {
+function makeDog(breed, furColor, character, dogsBirthday) {
 	return {
 		breed,
-		fur_color,
+		furColor,
 		character,
-		dogs_birthday,
+		dogsBirthday,
 	}
 };
 const newDog = makeDog('Poodle', 'white', 'friendly', '2009-12-23');
 
 newUser.pet = newDog;
 
-
+*/
 
 
 // Говорить, сколько дней осталось до дня рождения пользователя ***
@@ -105,5 +106,47 @@ newUser.pet = newDog;
 // - через new Date(...) преобразовать дату пользователя в объект даты
 // 	- вычесть из текущей даты дату рождения
 
-let now = new Date();
-user.birthday = new Date(1996, 0, 19);
+
+
+
+
+user.getDayForBirthday = function () {
+	const today = new Date();
+	const birthday = new Date(this.birthday);
+
+	const currentMonth = today.getMonth();
+	const birthdayMonth = birthday.getMonth();
+	const currentDay = today.getDay();
+	const birthdayDay = birthday.getDay();
+
+	if (currentMonth === birthdayMonth) {
+		if (currentDay === birthdayDay) {
+			return 0;
+		}
+	}
+
+
+	let birthdayThisYear = setYearToDate(birthday, today.getFullYear());
+
+	function setYearToDate(date, year) {
+		const newDate = new Date(+date);
+		newDate.setFullYear(year);
+		return newDate;
+	}
+
+	let result = getDateFromMs(birthdayThisYear, today);
+
+	function getDateFromMs(birthdayThisYear, today) {
+		return (birthdayThisYear - today) / (1000 * 60 * 60 * 24);
+	}
+
+	if (result > 0) {
+		return Math.round(result);
+	} else {
+		birthdayThisYear = setYearToDate(birthday, (today.getFullYear() + 1));
+		result = getDateFromMs(birthdayThisYear, today)
+		return Math.round(result);
+	}
+
+}
+// user.getDayForBirthday()

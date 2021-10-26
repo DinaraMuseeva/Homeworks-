@@ -62,17 +62,49 @@ function getNumberRank() {
 }
 //getNumberRank()
 
+function getNumberRank2() {
+	
+	for (let i = 0; i < array.length; i++) 
+	 {
+		const j = num;
+		switch (true) {
+			case j >= 0 && j < 10 :
+				alert(1);
+				break;
+
+			case j >= 10 &&j <= 99:
+				alert(2);
+				break;1
+
+			case j > 99 && j <= 1000:
+				alert(3);
+				break;
+			case j === "" || j === null || isNaN(j):
+				alert("Не число")
+				break;
+			default:
+				alert("Оч большое число, не хочу считать разряд")
+		}
+	}
+}
+
+//getNumberRank2()
+
+
+
+
+
 //запрашивать числа через prompt, и сразу же показывать результат их деления на числа в массиве [1, 2, 3] до тех пор пока пользователь не нажмет "Отмена" или не отправит пустую строку
 
 
-
+/*
 const array = [1, 2, 3];
 let num;
 
 do {
 	num = prompt("Введите число");
 	if (isNaN(num) || num === "" || num === null) {
-		array.push(" Чел, это не число!");
+		alert(" Чел, это не число!");
 	} else {
 		for (let i = 1; i <= array.length; i++) {
 			alert(num / i)
@@ -80,4 +112,4 @@ do {
 	}
 }
 while (num !== "" && num !== null);
-
+*/
