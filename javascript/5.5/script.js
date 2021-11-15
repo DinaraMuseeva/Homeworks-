@@ -165,9 +165,14 @@ function shuffle(array) {
 	array.sort(() => Math.random() - 0.5);
 }
 
+function random(min, max) {
+	return min + Math.random() * (max - min);
+}
+
 function shuffle(array) {
 	for (let index = 0; index < array.length; index += 1) {
-		const randomIndex = Math.random(random(0, array.length - 1));
+		const randomIndex = random(0, array.length - 1);
+
 
 		const a = array[index];
 
