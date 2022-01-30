@@ -25,7 +25,7 @@ array2.reverse();
 
 //Отсортировать массив [1, 2, 235, 2345356, 3, 2] по возрастанию и по убыванию
 const array3 = [1, 2, 235, 2345356, 3, 2];
-array3.sort ((a, b) => {
+array3.sort((a, b) => {
 	return a - b;
 });
 
@@ -39,19 +39,19 @@ const array5 = [1, 234, 2345, 234, 234523, 2, 1, 1, 453, 345];
 
 
 let array6 = array5.reduce((result, item) => {
-	if (result.includes(item)){
+	if (result.includes(item)) {
 		return result
-	}  
+	}
 	return [...result, item];
 
 }, [])
 
- let array7 = array5.filter((item, index) =>{
-	 return array5.indexOf(item) === index
+let array7 = array5.filter((item, index) => {
+	return array5.indexOf(item) === index
 
- });
+});
 
- //- Дан массив [3, 345, 234, 3452, 2236, 13] необходимо объединить его с массивом [345, 234, 2345, 12, 45, 1, 3] без дублирования элементов
+//- Дан массив [3, 345, 234, 3452, 2236, 13] необходимо объединить его с массивом [345, 234, 2345, 12, 45, 1, 3] без дублирования элементов
 
 const array8 = [3, 345, 234, 3452, 2236, 13];
 const array9 = [345, 234, 2345, 12, 45, 1, 3];
@@ -84,12 +84,12 @@ const arrayFromStr = str.split(" ").map((item) => {
 	return item[0]
 })
 
-function doArrayFromString (str){
+function doArrayFromString(str) {
 	return str
-	.split(" ")
-	.map((item) => {
-		return item[0]
-	})
+		.split(" ")
+		.map((item) => {
+			return item[0]
+		})
 
 
 }
@@ -104,43 +104,136 @@ const array11 = [1, 2345, 'a', 'q', 3, 43, 235, 'a', 'q', 1, 'a'];
 
 const counters = {};
 array11.forEach((item) => {
-	if (counters[item]){
+	if (counters[item]) {
 		counters[item] += 1;
 	} else {
 		counters[item] = 1;
 	}
 })
 
-let sortedArray = Object.keys(counters).sort((a, b)=>{
+let sortedArray = Object.keys(counters).sort((a, b) => {
 	return counters[b] - counters[a]
 })
 let result = sortedArray[0];
 
 
 //  Написать свою реализацию методов:
-const arr = [1, 2345, 1,'a', 'q', 3];
 
-const result = arr.map( (item, index, array) => {
-	return `${item}`
+
+
+
+// FILTER
+
+
+
+
+// REVERSE
+
+function myReverse(arr) {
+	let newArray = [];
+	for (let i = arr.length; i > 0; i--) {
+		newArray.push(i);
+	} return newArray;
+}
+myReverse([1, 2, 3, 4]);
+
+//CONCAT
+function myConcat(arr1, ...arg) {
+	let newArray = arr1;
+
+	for (let i = 0; i < arg.length; i++) {
+		newArray.push(...arg[i]);
+
+	} return newArray;
+}
+myConcat([1, 2], [3, 4], [5, 6]);
+
+// INCLUDES
+
+function myIncludes(arr, item) {
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] != item) continue; {
+			return true;
+		}
+	} return false;
+}
+myIncludes([1, 3, 4], 2);
+
+//FIND
+
+function myFind(arr, func) {
+	for (let i = 0; i < arr.length; i++) {
+		if (func(arr[i])) {
+			alert(arr[i])
+		}
+	}
+}
+
+myFind([1, 2, 3, 4], (func) => {
+	return func === 3;
+});
+//FILTER
+
+function myFilter(arr, func) {
+	let newArr = [];
+	for (let i = 0; i < arr.length; i++) {
+		if (func(arr[i])) {
+			newArr.push(arr[i]);
+		}
+	} return newArr;
+
+}
+
+myFilter([1, 2, 44, 77, 54, 8, 11, 90, 4], (func) => {
+
+	return func % 2 === 0;
 });
 
-const result = arr.reverse();
+//ForEach
 
-const result = arr.concat( ["прив", "пок" ]);
+function myForEach(arr, func) {
 
+	for (let i = 0; i < arr.length; i++) {
+		func(arr[i]);
+	}
 
-const result = arr.filter ((item) => {
-	return item > 2
-})
+}
 
-const result = arr.find (item => item ==1);
+myForEach([1, 2, 3], (func) => {
+	alert(func);
+});
 
-const result = arr.forEach((item)=> {
-	alert (item)
-})
+// MAP
 
-const result = arr.includes('q')
+function myMap(arr, func) {
+	let newArr = [];
+	for (let i = 0; i < arr.length; i++) {
+		if (func(arr[i])) {
+			newArr.push(arr[i] * 2);
+		}
+	} return newArr;
 
-const result = arr.sort((a,b) => {
-	return a- b
-})
+}
+
+myMap([1, 2, 44, 77, 54, 8, 11, 90, 4], (func) => {
+
+	return func;
+});
+
+// REDUCE
+
+function myReduce(arr, func) {
+	let sum = 0;
+
+	for (let i = 0; i < arr.length; i++) {
+		if (func(arr[i])) {
+			sum += arr[i];
+		}
+	} return sum;
+
+}
+
+myReduce([1, 2, 44, 77, 54, 8, 11, 90, 4], (func) => {
+
+	return func;
+});
