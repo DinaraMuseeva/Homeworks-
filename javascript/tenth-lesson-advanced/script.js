@@ -131,8 +131,8 @@ let result = sortedArray[0];
 
 function myReverse(arr) {
 	let newArray = [];
-	for (let i = arr.length; i > 0; i--) {
-		newArray.push(i);
+	for (let i of arr) {
+		newArray.unshift(i);
 	} return newArray;
 }
 myReverse([1, 2, 3, 4]);

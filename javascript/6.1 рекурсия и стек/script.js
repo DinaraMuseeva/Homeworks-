@@ -73,6 +73,15 @@ let list = {
 		}
 	}
 };
+
 function printList(list) {
 
+	alert(list.value); 
+
+	if (list.next) {
+		printList(list.next); 
+	}
+
 }
+
+printList(list);
