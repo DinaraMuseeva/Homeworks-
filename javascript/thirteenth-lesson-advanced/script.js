@@ -14,48 +14,49 @@ String.prototype.capitalize = function(){
 //необходимо реализовать класс калькулятора, калькулятор должен поддерживать операции для +,-,/,*: 
 
 class Calculator {
-	currentResult = 0; // если не задавать изначально setValue(value), то с методами *,/,-  работать не будет (Нужно ли устанавливать 0 изначально? ) 
+	value = 0; 
 
 	setValue(value) {
-		this.currentResult = value;
+		this.value = value;
 	}
-
-	getValue() {
-		return this.currentResult;
-	}
-
 	constructor() {
-		this.value;
-		this.currentResult;
-		this.name;
+
 	}
+
+	get currentResult(){
+		return this.value;
+	}
+	set currentResult(val){
+		throw new Error ("Нельзя присваивать")
+	}
+	
 
 	suma(...args) {
-		this.currentResult;
-		for (let arg of args) this.currentResult += arg;
-		return this.currentResult;;
+		
+		for (let arg of args) {
+			this.value += arg;
+		}
+		return this.value;;
 	}
 
 	multiply(...args) {
-		this.currentResult;
-		for (let arg of args) this.currentResult = this.currentResult * arg;
-		return this.currentResult;
+		for (let arg of args) this.value = this.value * arg;
+		return this.value;
 	}
 
 	substr(...args) {
-		this.currentResult
-		for (let arg of args) this.currentResult = this.currentResult - arg;
-		return this.currentResult
+		
+		for (let arg of args) this.value = this.value - arg;
+		return this.value;
 	}
 
 	divide(...args) {
-		this.currentResult
-		for (let arg of args) this.currentResult = this.currentResult / arg;
-		return this.currentResult
+		for (let arg of args) this.value = this.value / arg;
+		return this.value;
 	}
 
 	clear() {
-		this.currentResult = 0;
+		this.value = 0;
 
 	}
 
@@ -64,29 +65,23 @@ class Calculator {
 
 	}
 	toString() {
-		alert(this.currentResult);
+		return this.value.toString();
+	}
+
+	valueOf(){
+		return this.value;
 	}
 
 
 }
 
-// сделайте то же самое и для приведения к числу  - не сделала
-
-const calc = new Calculator();
-calc.setValue(2);
-calc.suma(3, 2)
-calc.currentResult;
-calc.clear()
-calc.addMethod('max', (a, b) => a > b ? a : b)
-calc.max(1, 2)
-alert(calc);  // выводит во втором окне undefained (почему?)
 
 
 class EngineeringCalculator extends Calculator {
 	pi = Math.PI;
 
 	static sin(x) {
-		return Math.sin(x);  // но в этом случае уже не работает с текущим значением, можно ли сделать как то по другому?
+		return Math.sin(x);  
 	}
 
 	cos() {
@@ -228,6 +223,35 @@ String.prototype.reverse = function () {
 
 "String".reverse();
 
+
+
+//В этом ката ваша задача — создать словарь класса, в который вы можете добавлять слова и их записи. Пример:
+
+class Dictionary {
+	constructor() {
+		this.col = new Map();
+	}
+
+
+	newEntry(key, value) {
+		this.col.set (key, value);
+	}
+
+	look(key) {
+		if( this.col.has(key)){
+			return this.col.get(key);
+		} else{
+			return `Can't find entry for ${key}`;
+		}
+	
+	}};
+
+let d = new Dictionary();
+
+d.newEntry("Apple", "A fruit that grows on trees");
+d.newEntry('Soccer', 'A sport');
+d.look("Apple")
+
 //Ruby и Javascript позволяют повторно открывать классы, чтобы вы могли добавлять новые функции к существующим классам и объектам.
 
 //Чтобы продемонстрировать это, вам нужно будет добавить новый метод myNewMethodJS в Stringкласс, который просто вызывает upcaseмет од(toUpperCase()в Javascript), чтобы:
@@ -240,35 +264,18 @@ String.prototype.myNewMethod = function () {
 
 
 
-//В этом ката ваша задача — создать словарь класса, в который вы можете добавлять слова и их записи. Пример:
-
-class Dictionary {
-	constructor() {
-		// your code
-	}
-
-	newEntry(key, value) {
-		// your code
-	}
-
-	look(key) {
-		// your code
-	}};
-
-let d = new Dictionary();
-
-d.newEntry("Apple", "A fruit that grows on trees");
-
 
 //Что-то не так с нашим классом воина. Метод удара работает некорректно. Ниже показан пример использования этого кода:
 
 var Warrior = function (name) {
+
 	this.name = name;
 	this.health = 100;
 }
 
 
-Warrior.strike = function (enemy, swings) {
+Warrior.prototype.strike = function (enemy, swings) {
+
 	enemy.health = Math.max(0, enemy.health - (swings * 10));
 }
 
@@ -278,3 +285,28 @@ var samurai = new Warrior('Samurai');
 samurai.strike(ninja, 3);
 // ninja.health should == 70
 
+
+
+
+
+//Включите арифметические операции над массивами, где значение массива определяется суммой его элементов. PS: из-за внутренней неопределенности пустых массивов в этом ката пустой массив рассматривается как 0.
+//Примеры:
+ [1,2,3] + 4 // = 10
+[1, 1, 1] - 3// = 0
+['a', 'b'] + 'c'// = 'abc'
+
+Array.prototype.sum = function () {
+	var s = 0;
+	for (i = 0; i < this.length; i++) {
+		s += Number(this[i])
+	}
+	return s
+}
+
+function MyNumberType(n) {
+	this.number = n;
+}
+
+MyNumberType.prototype.valueOf = function () {
+	return this.number;
+};
