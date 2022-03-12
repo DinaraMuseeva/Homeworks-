@@ -20,4 +20,5 @@ document.getElementsByName('search')[0]
 document.querySelector('input')
 document.querySelectorAll('input')[0]
 //Последний input в этой форме.
-F
+let test = form.querySelectorAll("input");
+inputs[inputs.length-1]

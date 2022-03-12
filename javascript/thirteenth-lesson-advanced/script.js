@@ -118,10 +118,10 @@ Array.prototype.myReverse = function () {
 [5, 3, 2].myReverse() 
 
 //========myFind======/
-Array.prototype.myFind = function(item){
+Array.prototype.myFind = function(func){
 	for (let i = 0; i < this.length; i++) {
-		if (item(this[i])) {
-			alert(this[i])
+		if (func(this[i])) {
+			return (this[i])
 		}
 	}
 };
@@ -133,12 +133,12 @@ Array.prototype.myFind = function(item){
 // ====myForEach======/
 Array.prototype.myForEach = function (func) {
 	for (let i = 0; i < this.length; i++){
-		alert (func(this[i]));
+		return (func(this[i], i, this));
 	}
 }
 
-['a', 'b', 'c'].myForEach((func) => {
-	return(func);
+['a', 'b', 'c'].myForEach((item) => {
+	return item;
 });
 
 
@@ -149,11 +149,12 @@ Array.prototype.myFilter = function (func) {
 		if (func(this[i])) {
 			arrFilter.push(this[i]);
 		}
-	} return arrFilter;
+	}
+	 return arrFilter;
 };
 
-[1, 2, 44, 77, 54, 8, 11, 90, 4].myFilter((func)=>{
-	return func % 2 === 0;
+[1, 2, 44, 77, 54, 8, 11, 90, 4].myFilter((item)=>{
+	return item % 2 === 0;
 });
 
 
@@ -162,14 +163,15 @@ Array.prototype.myFilter = function (func) {
  Array.prototype.myMap = function(func){
 	 let arrMap =[];
 	 for (let i = 0; i < this.length; i++){
-		 if(func(this[i])){
+		 
 			 arrMap.push( func (this[i]))
 		 }
-	 }return arrMap;
+	 
+	 return arrMap;
  
 }
- [1, 2, 44, 77, 54 ].myMap((func) => {
-	 return func * 2;
+ [1, 2, 44, 77, 54 ].myMap((item) => {
+	 return item * 2;
  });
 
 
@@ -264,27 +266,22 @@ String.prototype.myNewMethod = function () {
 
 
 
-
 //Что-то не так с нашим классом воина. Метод удара работает некорректно. Ниже показан пример использования этого кода:
 
-var Warrior = function (name) {
-
+let Warrior = function (name) {
 	this.name = name;
 	this.health = 100;
 }
-
+let ninja = new Warrior('Ninja');
+let samurai = new Warrior('Samurai');
 
 Warrior.prototype.strike = function (enemy, swings) {
-
-	enemy.health = Math.max(0, enemy.health - (swings * 10));
+ 	return enemy.health = Math.max(0, enemy.health - (swings * 10));  
 }
 
-var ninja = new Warrior('Ninja');
-var samurai = new Warrior('Samurai');
 
 samurai.strike(ninja, 3);
 // ninja.health should == 70
-
 
 
 
@@ -295,13 +292,7 @@ samurai.strike(ninja, 3);
 [1, 1, 1] - 3// = 0
 ['a', 'b'] + 'c'// = 'abc'
 
-Array.prototype.sum = function () {
-	var s = 0;
-	for (i = 0; i < this.length; i++) {
-		s += Number(this[i])
-	}
-	return s
-}
+
 
 function MyNumberType(n) {
 	this.number = n;
@@ -310,3 +301,70 @@ function MyNumberType(n) {
 MyNumberType.prototype.valueOf = function () {
 	return this.number;
 };
+
+const object1 = new MyNumberType(4);
+
+console.log(object1 + 3);
+
+
+
+
+/*Создайте класс HallOfFame(size, players)со listсвойством и addметодом.
+
+listдать список size playersв виде «Имя: балл», отсортированный по баллу в порядке убывания и имени в порядке возрастания в случае одинакового балла.
+
+add( player )Давайте. . . добавить игрока в список.
+
+a playerпредставляет собой массив из двух элементов:[name, score]
+если scoreменьше последнего игрока в списке, то игрок не добавляется.
+если nameон еще находится в списке, scoreэтот игрок обновляется , если новый счет лучше, чем предыдущий , и другие игроки могут оставаться в списке .
+если добавляется новый игрок или изменяется счет, список следует пересортировать
+наконец, addметод возвращает сам объект (чтобы разрешить цепочку методов).
+HallOfFameконструктор может иметь 2 аргумента: sizeи players.
+
+size(по умолчанию 5) определяет максимальный размер list( listне может принимать больше sizeигроков)
+playersесли они предоставлены, их следует добавить в список.
+Если нет игроков (или их недостаточно), «пустые слоты» должны возвращать пустые строки.
+*/
+
+
+class HallOfFame {
+
+	constructor() { }
+
+	get list() { }
+
+	add(player) { }
+
+}
+
+
+
+/*В шифре с ключевыми словами повторяющиеся буквы в ключевом слове удаляются, а алфавит перестраивается таким образом, что буквы в ключевом слове появляются первыми, а затем остальные буквы в алфавите в их обычном порядке.
+
+Например, для латинского алфавита в верхнем регистре с ключевым словом "KEYWORD":
+
+A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z
+
+становится:
+
+K|E|Y|W|O|R|D|A|B|C|F|G|H|I|J|L|M|N|P|Q|S|T|U|V|X|Z
+
+так что:
+
+cipher.encode('ABCHIJ') == 'KEYABC'
+cipher.decode('KEYABC') == 'ABCHIJ'
+Все буквы в ключевом слове также будут в алфавите. Для целей этого ката следует использовать только первое вхождение буквы в ключевом слове. Любые символы, не предусмотренные в алфавите, должны быть оставлены на месте при кодировании или декодировании.
+*/
+
+let abc = Array.from('ABCDEFGHI');
+
+function KeywordCipher(abc, keyword) {
+	this.encode = function (str) {
+		let arrStr = Array.from(str);
+		
+	}
+	this.decode = function (str) {
+		// ...
+	}
+}
