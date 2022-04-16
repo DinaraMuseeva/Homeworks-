@@ -5,6 +5,8 @@
 
 //Какой в нём текст (без поддерева) ?
 //Какое число потомков – всех вложенных <li> (включая глубоко вложенные) ?
+
+
 let test = document.querySelectorAll('li');
 for (let li of test) {
 
@@ -12,6 +14,6 @@ for (let li of test) {
 
 	let animal_count = li.querySelectorAll('li').length;
 	
-	console.log(`${animal}:${animal_count}`);
+	alert(`${animal}:${animal_count}`);
 	
 }

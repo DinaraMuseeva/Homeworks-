@@ -48,13 +48,9 @@ function factorial(n) {
 //Напишите функцию fib(n) которая возвращает n-е число Фибоначчи.
 
 function fibonacci(n){
-	if (n == 1) return 1;
-	let fib = 0;
-	for (let i = 1; i < n; i++) {
-		fib = fibonacci(n - 1) + fibonacci(n - 2);
-
-	}
-	return fib;
+	if (n == 1 || n == 0) return 1;
+	
+	return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 
@@ -85,3 +81,16 @@ function printList(list) {
 }
 
 printList(list);
+
+// через цикл
+function printList(list) {
+	let tmp = list;
+
+	while (tmp) {
+		alert(tmp.value);
+		tmp = tmp.next;
+	}
+
+}
+
+printList(list)

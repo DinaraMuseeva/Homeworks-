@@ -8,7 +8,7 @@
 String.prototype.capitalize = function(){
 	alert(this);
 };
-'привет'.capitalize() // 'Привет'
+//'привет'.capitalize() // 'Привет'
 
 
 //необходимо реализовать класс калькулятора, калькулятор должен поддерживать операции для +,-,/,*: 
@@ -95,12 +95,7 @@ class EngineeringCalculator extends Calculator {
 }
 const calc1 = new EngineeringCalculator();
 
-calc1.multiply(3, 2)
-calc1.setValue(3);
-calc1.sin() + calc1.pi // ~3.2827126616
-calc1.clear();
 
-EngineeringCalculator.sin(3)
 
 
 
@@ -115,7 +110,7 @@ Array.prototype.myReverse = function () {
 		arrReverse.unshift(i);
 	} return arrReverse;
 }
-[5, 3, 2].myReverse() 
+//[5, 3, 2].myReverse() 
 
 //========myFind======/
 Array.prototype.myFind = function(func){
@@ -126,9 +121,9 @@ Array.prototype.myFind = function(func){
 	}
 };
 
-[1,2,3,4].myFind((item)=>{
-	return(item === 3)
-});
+// [1,2,3,4].myFind((item)=>{
+// 	return(item === 3)
+// });
 
 // ====myForEach======/
 Array.prototype.myForEach = function (func) {
@@ -137,9 +132,9 @@ Array.prototype.myForEach = function (func) {
 	}
 }
 
-['a', 'b', 'c'].myForEach((item) => {
-	return item;
-});
+// ['a', 'b', 'c'].myForEach((item) => {
+// 	return item;
+// });
 
 
 //======myFilter======/
@@ -153,9 +148,9 @@ Array.prototype.myFilter = function (func) {
 	 return arrFilter;
 };
 
-[1, 2, 44, 77, 54, 8, 11, 90, 4].myFilter((item)=>{
-	return item % 2 === 0;
-});
+// [1, 2, 44, 77, 54, 8, 11, 90, 4].myFilter((item)=>{
+// 	return item % 2 === 0;
+// });
 
 
 
@@ -170,9 +165,9 @@ Array.prototype.myFilter = function (func) {
 	 return arrMap;
  
 }
- [1, 2, 44, 77, 54 ].myMap((item) => {
-	 return item * 2;
- });
+//  [1, 2, 44, 77, 54 ].myMap((item) => {
+// 	 return item * 2;
+//  });
 
 
 //=========Наш прототип счетчика сломан. Можете ли вы определить, что здесь не так?
@@ -223,11 +218,11 @@ String.prototype.reverse = function () {
 };
 
 
-"String".reverse();
+//"String".reverse();
 
 
 
-//В этом ката ваша задача — создать словарь класса, в который вы можете добавлять слова и их записи. Пример:
+//В этом ката ваша задача — создать словарь класса, в который вы можете добавлять слова и их записи. 
 
 class Dictionary {
 	constructor() {
@@ -250,19 +245,20 @@ class Dictionary {
 
 let d = new Dictionary();
 
-d.newEntry("Apple", "A fruit that grows on trees");
-d.newEntry('Soccer', 'A sport');
-d.look("Apple")
+// d.newEntry("Apple", "A fruit that grows on trees");
+// d.newEntry('Soccer', 'A sport');
+// d.look("Apple")
+
+
 
 //Ruby и Javascript позволяют повторно открывать классы, чтобы вы могли добавлять новые функции к существующим классам и объектам.
-
 //Чтобы продемонстрировать это, вам нужно будет добавить новый метод myNewMethodJS в Stringкласс, который просто вызывает upcaseмет од(toUpperCase()в Javascript), чтобы:
 
 String.prototype.myNewMethod = function () {
 	return this.toUpperCase();
 };
 
-"abc".myNewMethod(); ///ABC
+//"abc".myNewMethod(); ///ABC
 
 
 
@@ -280,7 +276,7 @@ Warrior.prototype.strike = function (enemy, swings) {
 }
 
 
-samurai.strike(ninja, 3);
+//samurai.strike(ninja, 3);
 // ninja.health should == 70
 
 
@@ -293,19 +289,22 @@ samurai.strike(ninja, 3);
 ['a', 'b'] + 'c'// = 'abc'
 
 
+Array.prototype.valueOf = function () {
+	let arr = this;
+	let sum;
 
-function MyNumberType(n) {
-	this.number = n;
+	if (typeof arr[0] == "string") {
+		sum = "";
+	} else {
+		sum = 0;
+	}
+
+	for (i = 0; i < arr.length; i++) {
+
+		sum += arr[i]
+	}
+	return sum;
 }
-
-MyNumberType.prototype.valueOf = function () {
-	return this.number;
-};
-
-const object1 = new MyNumberType(4);
-
-console.log(object1 + 3);
-
 
 
 
@@ -330,15 +329,74 @@ playersесли они предоставлены, их следует доба�
 
 class HallOfFame {
 
-	constructor() { }
+	constructor(size = 5, players = []) {
+		this.size = size;
+		this.players = players;
+	}
 
-	get list() { }
+	sortArray(array) {
+		array.sort(function (a, b) {
+			
 
-	add(player) { }
+			if (a[1] < b[1] && a[0] !== b[0]     
+				|| a[1] === b[1] && a[0] > b[0]) {    
+				return 1;
+			}
+			else {
+				return -1;
+			}
 
+		});
+
+	}
+
+
+	listPlayers(array) {
+		let result = [];
+		for (let i = 0; i < this.size; i++) {
+			if (array[i] === undefined) {     
+				result.push('');    
+			}
+			else {     
+				result.push(array[i].join(': ') );    
+			}
+		}
+		return result;
+	}
+
+	filterPlayer() {
+		const result = [];
+		for (let i = 0; i < this.players.length; i++) {
+			for (let j = i + 1; j < this.players.length; j++) {
+				
+				if (this.players[j][0] === this.players[i][0]) {
+					if (this.players[i][1] < this.players[j][1]) {
+						this.players.splice(i, 1);
+					}
+					else {
+						this.players.splice(j, 1);
+					}
+					result.push(this.players);
+				}
+			}
+		}
+		return result;
+	}
+
+	
+	get list() {
+		this.sortArray(this.players); 
+		return this.listPlayers(this.players);
+	}
+
+	add(player) {
+		this.players.push(player); 
+		return this;  
+	}
 }
 
-
+var top3 = new HallOfFame();
+console.log(top3);
 
 /*В шифре с ключевыми словами повторяющиеся буквы в ключевом слове удаляются, а алфавит перестраивается таким образом, что буквы в ключевом слове появляются первыми, а затем остальные буквы в алфавите в их обычном порядке.
 
@@ -357,14 +415,103 @@ cipher.decode('KEYABC') == 'ABCHIJ'
 Все буквы в ключевом слове также будут в алфавите. Для целей этого ката следует использовать только первое вхождение буквы в ключевом слове. Любые символы, не предусмотренные в алфавите, должны быть оставлены на месте при кодировании или декодировании.
 */
 
-let abc = Array.from('ABCDEFGHI');
 
-function KeywordCipher(abc, keyword) {
+
+class KeywordCipher {
+	constructor(keyword) {
+		this.alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+		this.cyphAlphabet = [];
+		this.keyword = keyword;
+	}
+
+	initCypher() {
+		let alphabet = [...this.alphabet];
+		for (let char of this.keyword) {
+			alphabet.splice(alphabet.indexOf(char), 1)
+		}
+		this.cyphAlphabet = alphabet;
+		const res = this.keyword.split('').concat(this.cyphAlphabet);
+		this.cyphAlphabet = res;
+	}
+
+	decode(word) {
+		return this.changeWord(this.alphabet, this.cyphAlphabet, word);
+	}
+
+	encode(word) {
+		return this.changeWord(this.cyphAlphabet, this.alphabet, word);
+	}
+
+	changeWord(cyphAlphabet, alphabet, word) {
+		const w = [];
+		for (let i = 0; i < word.length; i++) {
+			const index = alphabet.indexOf(word[i]);
+			const letter = cyphAlphabet[index];
+
+			w.push(letter);
+
+		}
+
+		return w.join('');
+	}
+}
+// const cypher = new Cypher('keyword');
+// cypher.initCypher();
+
+// console.log(cypher.encode('abchij'))
+// console.log(cypher.decode('keyabc')
+
+function KeywordCipher(abc, key) {
+	this.alphabet = Array.from(abc);
+	this.ciphAlphabet = [];
+	//this.keyword = keyword;
+
+
+
 	this.encode = function (str) {
-		let arrStr = Array.from(str);
-		
+		let alphabet = [...this.alphabet];
+		for (let char of key) {
+			alphabet.splice(alphabet.indexOf(char), 1)
+		}
+		this.ciphAlphabet = alphabet;
+		const res = key.split('').concat(this.ciphAlphabet);
+		this.ciphAlphabet = res;
+
+
+		const w = [];
+		for (let i = 0; i < str.length; i++) {
+			const index = this.alphabet.indexOf(str[i]);
+			const letter = this.ciphAlphabet[index];
+
+			w.push(letter);
+
+		}
+
+		return w.join('');
 	}
+
+
 	this.decode = function (str) {
-		// ...
+
+		let alphabet = [...this.alphabet];
+		for (let char of key) {
+			alphabet.splice(alphabet.indexOf(char), 1)
+		}
+		this.ciphAlphabet = alphabet;
+		const res = key.split('').concat(this.ciphAlphabet);
+		this.ciphAlphabet = res;
+
+		const w = [];
+		for (let i = 0; i < str.length; i++) {
+			const index = this.ciphAlphabet.indexOf(str[i]);
+			const letter = this.alphabet[index];
+
+			w.push(letter);
+
+		}
+
+		return w.join('');
 	}
+
+
 }

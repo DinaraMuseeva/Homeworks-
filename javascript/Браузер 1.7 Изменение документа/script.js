@@ -18,48 +18,22 @@ function clear(elem) {
 
 Если пользователь вводит HTML - теги -– пусть в списке они показываются как обычный текст.
 
-  */
-while (true) {
-	let ul = document.querySelector('ul');
+ */
+let ulList = document.createElement('ul');
+document.body.append(ulList);
 
+while (true) {
+	
 	let li = document.createElement('li');
 
 	//li.textContent = prompt("Введите данные");
 
 	if (li.textContent == "") break;
-
-	ul.append(li);
+	ulList.append(li);
 }
-
-
-// 6.Напишите код, который добавит каждому элементу списка <li> количество вложенных в него элементов. Узлы нижнего уровня, без детей – пропускайте.
-
-
-
-let ul = document.querySelectorAll('li'); //NodeList(16) [li, li, li, li, li, li, li, li, li, li, li, li, li, li, li, li]
-for (let li of ul) {
-
-	let count = li.querySelectorAll('li').length;
-	if (count == 0) continue;
-	li.firstChild.data += ' [' + count + ']';
-}
-
-
-// 9. Напишите код для вставки <li>2</li><li>3</li> между этими двумя <li>:
-
-let li2 = document.createElement('li');
-li2.id = "tree";
-li2.innerHTML = 2;
-let li3 = document.createElement('li');
-li2.id = "four";
-li3.innerHTML = 3;
-
-//ul.insertBefore(li2, ul.children[1]);
-
-//ul.insertBefore(li3, ul.children[2]);
-
-
+ 
 // 5.Напишите функцию createTree, которая создаёт вложенный список ul/li из объекта.
+
 let data = {
 	"Рыбы": {
 		"форель": {},
@@ -78,22 +52,137 @@ let data = {
 	}
 };
 
-function createTree(container, obj) {
 
-	for (let key of Object.keys(obj)) {
-		let ul = document.createElement('ul');
-		ul.className = "type";
-		ul.innerHTML = key;
-		container.append(ul)
+function createTree(container, obj) {
+	container.append(createElementTree(obj));
+}
+
+function createElementTree(obj) {
+
+	let ulTree = document.createElement('ul');
+
+	for (let key in obj) {
+		let li = document.createElement('li');
+		li.innerHTML = key;
+
+		let nextLi = createElementTree(obj[key]);
+		if (nextLi) li.append(nextLi);
+
+		ulTree.append(li);
+
+
 	}
+	return ulTree;
+}
+
+createTree(document.getElementById('container'), data);
+
+
+
+
+/*
+
+const container = document.querySelector('.container');
+
+function createTree(container, data) {
+	let ul = document.createElement('ul');
+	container.append(ul);
+
+
+	for (let key in data) {
+		let li = document.createElement('li')
+		li.innerHTML = key;
+
+		ul.append(li);
+
+		if (Object.keys(data[key]).length) {
+			createTree(li, data[key])
+
+		}
+	}
+}
+
+createTree(container, data);
+*/
+
+
+
+// 6.Напишите код, который добавит каждому элементу списка <li> количество вложенных в него элементов. Узлы нижнего уровня, без детей – пропускайте.
+
+let ul = document.querySelectorAll('li'); //NodeList(16) [li, li, li, li, li, li, li, li, li, li, li, li, li, li, li, li]
+for (let li of ul) {
+	if (li.querySelectorAll('li').length == 0 ) continue;
+	li.firstChild.data += `[${li.querySelectorAll('li').length}]`;
 
 }
 
-//createTree(document.getElementById('tree'), data);
+//через рекурсию
+
+function fillData(element) {
+	if (!element.getElementsByTagName('ul').length) {
+		return 0;
+
+	} else {
+
+		let nDesc = element.getElementsByTagName('li').length;
+
+		let list = element.getElementsByTagName('ul')[0].children
+
+		for (let li of list) {
+
+			if (li.getElementsByTagName('li').length) {
+				fillData(li)
+			}
+		}
+		return element.firstChild.data += `[${ nDesc }]`
+	}
+}
+
+const container = document.querySelector('div');
+
+fillData(container);
+
+//element.firstChild.data = null;
 
 
 
 // 8.Создайте цветные часы как в примере ниже:
+
+function runTimer(){
+  
+  let hour = document.getElementById('hour');
+  let min = document.getElementById('min');
+  let sec = document.getElementById('sec');
+
+
+  let date = new Date();
+  let hours = date.getHours();
+  hour.innerHTML = hours;
+
+  let minutes = date.getMinutes();
+  min.innerHTML = minutes;
+
+  let seconds = date.getSeconds();
+  sec.innerHTML = seconds;
+
+}
+let timer;
+
+function clockStart() { 
+  timer = setInterval(runTimer, 1000);
+  runTimer(); 
+}
+
+function clockStop() {
+  clearTimeout(timer);
+ 
+}
+
+
+
+// 9. Напишите код для вставки <li>2</li><li>3</li> между этими двумя <li>:
+
+one.insertAdjacentHTML('afterend', '<li>2</li><li>3</li>');
 
 
 
@@ -126,4 +215,103 @@ ArrayFromTrList.forEach(function (item) {
 //Календарь должен быть таблицей, где неделя – это < tr >, а день – это < td >.У таблицы должен быть заголовок с названиями дней недели, каждый день – <th>, первым днём недели должен быть понедельник.
 
 //createCalendar(cal, 2012, 9)
-//ArrayFromTrList[0].children[0].innerHTML
+
+
+function createCalendar(  year, month){
+
+	const lastDayOfTheMonth = new Date(year, month, 0 );
+	const day = lastDayOfTheMonth.getDate();
+	const dayArray =[];
+	for (let d = 1; d <= day; d++){
+		dayArray.push(d);
+
+	}
+
+	const firstDayOfTheMonth = new Date (year, month-1);
+
+	
+
+	function getLocalDay(firstDayOfTheMonth) {
+
+		const day = firstDayOfTheMonth.getDay();
+
+		if (day == 0) { 
+			day = 7;
+		}
+
+		return day;
+	}
+
+	const weekDay = getLocalDay(firstDayOfTheMonth); 
+	const emptyTd =  weekDay -1 ;
+
+	const weekDayLAst = getLocalDay(lastDayOfTheMonth);
+	const emptyTdAtTheEnd = 7 - weekDayLAst;
+
+	const table = document.createElement('table');
+document.body.append(table);
+
+let tr = document.createElement('tr');
+table.append(tr);
+
+let week = ["пн", "вт", "ср", "чт", "пт", "сб", "вс"];
+function getListContent() {
+	let fragment = new DocumentFragment();
+	
+
+	for (let i = 0; i < week.length; i++) {
+		let th = document.createElement('th');
+		
+		th.append(week[i]);
+		fragment.append(th);
+	}
+
+	return fragment;
+}
+
+tr.append(getListContent()); 
+
+	let trTd;
+
+	trTd = document.createElement('tr');
+	table.append(trTd);
+
+	for (let i = 0; i < emptyTd; i++) {
+		let tdEmpty = document.createElement('td');
+
+		trTd.prepend(tdEmpty);
+	}
+
+
+	let counter = emptyTd;
+
+	for (let i = 1 ; i <= dayArray.length ; i++) {
+		
+		if (counter == 0) {
+			trTd = document.createElement('tr');
+			table.append(trTd);
+			
+		} 
+		
+		let td = document.createElement('td');
+		td.append(i);
+		trTd.append(td);
+
+		counter++;
+
+		if (counter == 7) {
+			counter = 0;
+		}
+	}
+
+	for (let i = 0; i < emptyTdAtTheEnd; i++) {
+		let tdEmpty = document.createElement('td');
+
+		tdEmpty.append();
+		trTd.append(tdEmpty);
+	}
+	
+
+}
+createCalendar(2012, 11);
+

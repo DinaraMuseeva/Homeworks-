@@ -20,9 +20,7 @@ document.body.children[1].lastElementChild; // li "Пит"
 
 let table = document.body.firstElementChild;
 
-//document.body.firstElementChild.rows[0].cells[0].style.backgroundColor = 'red';
-
-for (let i = 0; i < table.rows.length; i++) {
+ for (let i = 0; i < table.rows.length; i++) {
 	let row = table.rows[i];
 	row.cells[i].style.backgroundColor = 'red';
 }
