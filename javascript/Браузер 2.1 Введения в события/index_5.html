@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+.list {
+	list-style-type: none;
+	padding-left: 0;
+	display: none;
+
+}
+
+.title::before {
+	content: '▶ ';
+	color: green;
+}
+
+.title {
+	cursor: pointer;
+}
+
+.open .title::before{
+	content: '▼ ';
+	color: green;
+}
+
+.menu.open .list{
+	display: block;
+}
+	</style>
+</head>
+
+<body>
+
+
+<div id ="menu1"   class="menu">
+	<span class="title">Сладости (нажми меня)!</span>
+	<ul class="list">
+		<li>Пирожное</li>
+		<li>Пончик</li>
+		<li>Мёд</li>
+	</ul>
+</div>
+
+
+	
+	<script>
+		
+//Создать меню, которое по нажатию открывается либо закрывается:
+let title = document.querySelector('span');
+let menu = document.getElementById('menu1');
+
+
+title.onclick = function () {
+menu.classList.toggle('open');
+	}
+
+	</script>
+</body>
+
+</html>

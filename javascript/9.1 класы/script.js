@@ -1,5 +1,5 @@
 "use strict"
-
+/*  переделать на классы
 function Clock({ template }) {
 
 	let timer;
@@ -38,7 +38,7 @@ function Clock({ template }) {
 let clock = new Clock({ template: 'h:m:s' });
 clock.start();
 
-
+*/
 
 
 class Clock {

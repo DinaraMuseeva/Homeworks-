@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		body {
+
+			padding: 20px 0 0 20px;
+			cursor: pointer;
+			height: 2000px;
+		}
+
+		#field {
+			overflow: hidden;
+			width: 200px;
+			height: 150px;
+			border-top: 10px solid black;
+			border-right: 10px solid gray;
+			border-bottom: 10px solid gray;
+			border-left: 10px solid black;
+			background-color: #00FF00;
+			font: 10px/1.2 monospace;
+		}
+
+		.triangle-right {
+			position: relative;
+			width: 0;
+			height: 0;
+			border-top: 6px solid transparent;
+			border-bottom: 6px solid transparent;
+			border-left: 20px solid red;
+			text-indent: -20px;
+			font: 12px/1 monospace;
+		}
+	</style>
+
+</head>
+
+<body>
+
+
+
+	Кликните в любом месте для получения координат в контексте окна.
+	<br> Это для тестирования, чтобы проверить результат, который вы получили с помощью JavaScript.
+	<br>
+	
+
+
+	<div id="field">
+		. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+		. .
+		. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+		. .
+		. . . . . . . . . .
+		. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+		. .
+		. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+	</div>
+	
+	<div class="triangle-right" style="left:-20px;top:-176px">1</div>
+	<div class="triangle-right" style="left:-10px;top:-178px">3</div>
+	<div class="triangle-right" style="left:190px;top:-40px">4</div>
+	<div class="triangle-right" style="left:200px;top:-42px">2</div>
+	<div id="coords"></div>
+	<script>
+
+
+		//Найдите координаты точек относительно окна браузера
+	document.onclick = function (e) {
+			coords.innerHTML = e.clientX + ':' + e.clientY;
+		};
+
+
+		let coordinates = field.getBoundingClientRect();
+		console.log(coordinates);
+
+		// верхний левый, внешний угол (это просто).
+		let btnLeftTop = [coordinates.left, coordinates.top];
+		console.log(btnLeftTop);
+		// нижний правый, внешний угол (тоже просто).
+		let btnRightBottom = [coordinates.right, coordinates.bottom];
+		console.log(btnRightBottom);
+
+		// верхний левый, внутренний угол (чуть сложнее).
+		let btnInnerTopLeft = [coordinates.left + field.clientLeft, coordinates.top + field.clientTop];
+		console.log(btnInnerTopLeft);
+
+		// нижний правый, внутренний угол (есть несколько способов, выберите один).
+		let btnInnerRightBottom =[ coordinates.right -field.clientLeft,  coordinates.bottom - field.clientTop ];
+		console.log(btnInnerRightBottom);
+
+
+
+		
+
+
+	</script>
+</body>
+
+</html>

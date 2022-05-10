@@ -1,32 +1,4 @@
 "use strict"
-/*
-//Найдите координаты точек относительно окна браузера
-
-let coordinates = field.getBoundingClientRect();
-
-// верхний левый, внешний угол (это просто).
-let btnLeftTop = [coordinates.left, coordinates.top];
-
-// нижний правый, внешний угол (тоже просто).
-let btnRightBottom = [coordinates.right, coordinates.bottom];
-
-
-// верхний левый, внутренний угол (чуть сложнее).
-let btnInnerTopLeft = [coordinates.left + field.clientTop, coordinates.top + field.clientLeft ];
-
-// нижний правый, внутренний угол (есть несколько способов, выберите один).
-let btnInnerRightBottom =[ coordinates.right -field.clientTop,  coordinates.bottom - field.clientLeft ];
-
- let coords = document.getElementById("coords");
-
- document.onclick = function(e) { 
-  coords.innerHTML = e.clientX + ':' + e.clientY;
- };
- coords2.innerHTML = `${btnLeftTop}, ${btnRightBottom},  ${btnInnerTopLeft},  ${btnInnerRightBottom}`
-
- */
-
-
 
 //Покажите заметку рядом с элементом
 
@@ -35,17 +7,17 @@ function positionAt(anchor, position, elem) {
 	console.log(coords);
 	elem.style.position = "absolute"
 
-	if (position === "top") {
+	if (position === "top-out")  {
 		elem.style.left = coords.left + "px";
 		elem.style.top = coords.top - elem.offsetHeight + "px";
 	}
 
-	if (position === "bottom") {
+	if (position === "bottom-out") {
 		elem.style.left = coords.left + "px";
 		elem.style.top = coords.bottom + "px";
 	}
 
-	if (position === "right") {
+	if (position === "right-out") {
 		elem.style.left = coords.right + "px";
 		elem.style.top = coords.top + "px";
 	}
@@ -82,9 +54,9 @@ function showNote(anchor, position, html) {
 // test it
 let blockquote = document.querySelector('blockquote');
 
-showNote(blockquote, "top", "note above");
-showNote(blockquote, "right", "note at the right");
-showNote(blockquote, "bottom", "note below");
+showNote(blockquote, "top-out", "note above");
+showNote(blockquote, "right-out", "note at the right");
+showNote(blockquote, "bottom-out", "note below");
 showNote(blockquote, "top-in", "note top-in");
 showNote(blockquote, "bottom-in", "note right-out");
 showNote(blockquote, "right-in", "note bottom-in");

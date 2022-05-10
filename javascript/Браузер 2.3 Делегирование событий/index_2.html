@@ -1,0 +1,91 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <style>
+	  span{
+  cursor: pointer;
+}
+span:hover {
+  font-weight: bold;
+}
+.tree{
+  margin-bottom: 50px;
+  
+}
+  </style>
+</head>
+<body>
+
+  
+  <ul class="tree" id="tree">
+    <li>Животные 
+      <ul>
+        <li>Млекопитающие
+          <ul>
+            <li>Коровы</li>
+            <li>Ослы</li>
+            <li>Собаки</li>
+            <li>Тигры</li>
+          </ul>
+        </li>
+        <li>Другие
+          <ul>
+            <li>Змеи</li>
+            <li>Птицы</li>
+            <li>Ящерицы</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Рыбы
+      <ul>
+        <li>Аквариумные
+          <ul>
+            <li>Гуппи</li>
+            <li>Скалярии</li>
+          </ul>
+        </li>
+        <li>Морские
+          <ul>
+            <li>Морская форель</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+    
+
+
+
+  <script >
+	  //Создайте дерево, которое по клику на заголовок скрывает-показывает потомков:
+
+		const list = document.getElementsByTagName('li');
+		for (let li of list) {
+			if (li.getElementsByTagName('li').length > 0) {
+				const span = document.createElement('span');
+				li.prepend(span); // вставлям span перед li
+				span.append(span.nextSibling); //вставляем текст в span
+			}
+		}
+
+
+		tree.onclick = function (event) {
+			let targetLi = event.target;
+
+			if (targetLi.tagName !== 'SPAN') {
+				return;
+			}
+
+			let childrenLi = targetLi.parentNode.querySelector('ul');// в родителе Span (в li) найти первый ul
+			console.log(childrenLi)
+
+			if (!childrenLi) return;
+
+			childrenLi.hidden = !childrenLi.hidden;
+		}
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<link rel="stylesheet" href="style.css">
+</head>
+
+
+<body >
+
+	<input type="button" id="hider" value="Нажмите, чтобы спрятать текст" />
+
+	<div id="text">Текст</div>
+	
+
+
+	<input type="button" id="hider_2" value="Нажмите, чтобы спрятать " />
+
+<div style="padding-top: 30px;">
+<input type="button" id="button" value="Нажмите, чтобы запустить " />
+
+</div>
+	
+
+    <script >
+//Скрыть элемент по нажатию кнопки
+	hider.onclick = function () {
+	text.remove();
+	}
+
+//Создайте кнопку, которая будет скрывать себя по нажатию.
+
+	//Вариант 1 
+	hider_2.onclick = function () {
+	hider_2.remove();
+	}
+
+	//Вариант 2
+		function deleteButton() {
+			this.hidden = true
+		}
+		hider_2.addEventListener("click", deleteButton)
+
+
+
+// Какой обработчик запустится?
+		button.addEventListener("click", () => alert("1")); //сработает
+
+		button.removeEventListener("click", () => alert("1")); // не сработает, так как передана новая функция
+
+		button.onclick = () => alert(2);// сработает 
+
+	</script>
+</body>
+
+</html>

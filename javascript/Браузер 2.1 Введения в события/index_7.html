@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+.smile {
+	height: 130px;
+	width: 9999px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 0;
+}
+.smile-item{
+	display: inline-block;
+
+}
+
+.smile-item img{
+width: 130px;
+height: 130px;
+display: block;
+}
+
+.container{
+	width: 500px;
+	background-color: #ccc;
+	border: 1px solid gray;
+	border-radius: 30px;
+	position: relative;
+}
+.slider{
+width: 390px;
+overflow: hidden;
+margin: 0 auto;
+}
+
+
+.arrow {
+	padding: 0;
+	background: #ddd;
+	border-radius: 15px;
+	border: 1px solid gray;
+	font-size: 24px;
+	line-height: 24px;
+	color: #444;
+	display: block;
+
+	position: absolute;
+	top: 40%;
+}
+.arrow-left{
+left: 15px;
+}
+.arrow-right{
+right: 15px;
+}
+
+.arrow:focus {
+	outline: none;
+}
+
+.arrow:hover {
+	background: #ccc;
+	cursor: pointer;
+}
+	</style>
+</head>
+
+
+
+<body >
+
+
+<div class="container">
+<button class="arrow arrow-left">⇦</button>
+
+
+<div class="slider">
+<ul class="smile">
+	<li class="smile-item"><img src="https://ru.js.cx/carousel/1.png"></li>
+	<li class="smile-item"><img src="https://ru.js.cx/carousel/2.png"></li>
+	<li class="smile-item"><img src="https://ru.js.cx/carousel/3.png"></li>
+	<li class="smile-item"><img src="https://ru.js.cx/carousel/4.png"></li>
+	<li class="smile-item"><img src="https://ru.js.cx/carousel/5.png"></li>
+	<li class="smile-item"><img src="https://ru.js.cx/carousel/6.png"></li>
+	<li class="smile-item"><img src="https://ru.js.cx/carousel/7.png"></li>
+	<li class="smile-item"><img src="https://ru.js.cx/carousel/8.png"></li>
+	<li class="smile-item"><img src="https://ru.js.cx/carousel/9.png"></li>
+	<li class="smile-item"><img src="https://ru.js.cx/carousel/10.png"></li>
+</ul>
+</div>
+
+
+<button class="arrow arrow-right">⇨</button>
+</div>
+
+	
+<script>
+	
+	
+
+	let list = document.querySelector('.smile');
+	console.log(list);
+
+	let listLi = document.querySelectorAll(".smile-item");
+
+	let slider = document.querySelector('.slider');
+	let sliderItemWidth = listLi.length * 130 - slider.offsetWidth;
+	
+	let counter = 0;
+
+
+	document.querySelector('.arrow-left').onclick = function () {
+			counter += 130 * 3;
+			if (counter > 0) {
+			counter = 0;
+		}
+			list.style.marginLeft = counter + 'px';
+		};
+
+	document.querySelector('.arrow-right').onclick = function () {
+
+		counter -= 130 * 3;
+		if (counter < -sliderItemWidth) {
+			counter = -sliderItemWidth;
+		}
+			list.style.marginLeft = counter + 'px';
+		};
+		
+	
+
+
+</script>
+</body>
+
+</html> 

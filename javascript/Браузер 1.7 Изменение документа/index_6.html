@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+	
+	</style>
+</head>
+
+<body>
+
+
+<div >
+	<ul>
+		<li>Животные
+			<ul>
+				<li>Млекопитающие
+					<ul>
+						<li>Коровы</li>
+						<li>Ослы</li>
+						<li>Собаки</li>
+						<li>Тигры</li>
+					</ul>
+				</li>
+				<li>Другие
+					<ul>
+						<li>Змеи</li>
+						<li>Птицы</li>
+						<li>Ящерицы</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>Рыбы
+			<ul>
+				<li>Аквариумные
+					<ul>
+						<li>Гуппи</li>
+						<li>Скалярии</li>
+					</ul>
+				</li>
+				<li>Морские
+					<ul>
+						<li>Морская форель</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+
+	<script> 
+
+	// 6.Напишите код, который добавит каждому элементу списка <li> количество вложенных в него элементов. Узлы нижнего уровня, без детей – пропускайте.
+
+		// let ul = document.querySelectorAll('li'); //NodeList(16) [li, li, li, li, li, li, li, li, li, li, li, li, li, li, li, li]
+		// for (let li of ul) {
+		// 	if (li.querySelectorAll('li').length == 0 ) continue;
+		// 	li.firstChild.data += `[${li.querySelectorAll('li').length}]`;
+
+		// }
+
+		//через рекурсию
+
+		function fillData(element) {
+
+			if (!element.getElementsByTagName('ul').length) {
+				return 0;
+
+			} else {
+
+				let nDesc = element.getElementsByTagName('li').length;
+
+				let list = element.getElementsByTagName('ul')[0].children
+
+				for (let li of list) {
+
+					if (li.getElementsByTagName('li').length) {
+						fillData(li)
+					}
+				}
+				return element.firstChild.data += `[${nDesc}]`
+
+			}
+		}
+
+		const container = document.querySelector('div');
+
+
+		fillData(container);
+		container.firstChild.data = null;
+	</script>
+</body>
+
+</html>

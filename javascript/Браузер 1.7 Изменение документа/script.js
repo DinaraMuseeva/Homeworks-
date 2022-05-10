@@ -1,11 +1,7 @@
 "use strict"
 
-//  2.Создайте функцию clear(elem), которая удаляет всё содержимое из elem.
-function clear(elem) {
-	elem.remove()
-}
 
-//clear(elem); // очищает список
+
 
 //  4.Напишите интерфейс для создания списка.
 /*
@@ -107,42 +103,6 @@ createTree(container, data);
 
 
 
-// 6.Напишите код, который добавит каждому элементу списка <li> количество вложенных в него элементов. Узлы нижнего уровня, без детей – пропускайте.
-
-let ul = document.querySelectorAll('li'); //NodeList(16) [li, li, li, li, li, li, li, li, li, li, li, li, li, li, li, li]
-for (let li of ul) {
-	if (li.querySelectorAll('li').length == 0 ) continue;
-	li.firstChild.data += `[${li.querySelectorAll('li').length}]`;
-
-}
-
-//через рекурсию
-
-function fillData(element) {
-	if (!element.getElementsByTagName('ul').length) {
-		return 0;
-
-	} else {
-
-		let nDesc = element.getElementsByTagName('li').length;
-
-		let list = element.getElementsByTagName('ul')[0].children
-
-		for (let li of list) {
-
-			if (li.getElementsByTagName('li').length) {
-				fillData(li)
-			}
-		}
-		return element.firstChild.data += `[${ nDesc }]`
-	}
-}
-
-const container = document.querySelector('div');
-
-fillData(container);
-
-//element.firstChild.data = null;
 
 
 

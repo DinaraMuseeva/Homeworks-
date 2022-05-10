@@ -1,14 +1,16 @@
 "use strict"
 
-//Найти размер прокрутки снизу
+//     1.Найти размер прокрутки снизу
 
-const scrollBottom = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
+//const scrollBottom = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
 
-//Узнать ширину полосы прокрутки
+//2.   Узнать ширину полосы прокрутки
 
-const scrollWidth = elem.offsetWidth - elem.clientWidth;
+//const scrollWidth = elem.offsetWidth - elem.clientWidth;
 
-//Поместите мяч в центр поля
+
+
+//3.    Поместите мяч в центр поля
 const centerY = field.clientWidth / 2;
 const centerX = field.clientHeight / 2;
 
