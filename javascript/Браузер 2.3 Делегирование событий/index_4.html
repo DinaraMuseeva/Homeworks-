@@ -65,16 +65,16 @@
 				note.style.top = coordsButton.bottom + 5 + "px";
 			}
 
-			if(coordsButton.left > coordsButton.left - coordsButton.width / 2)  {
-				note.style.left = coordsButton.left - coordsButton.width / 2 + "px";
-				
-			} else { 
-				note.style.left = coordsButton.left + "px"; // НЕ РАБОТАЕТ :(
+			
+			let left = coordsButton.left - coordsButton.width / 2 ;
+			console.log(left)
+			
+			if (left < 0) {
+				note.style.left = coordsButton.left  + "px";
+			}else{ note.style.left= left + "px"} 
 
-			}
-			console.log(coordsButton);
-			console.log(coordsNote);
- 
+			console.log(note.style.left);
+			
 	
 		});
 
