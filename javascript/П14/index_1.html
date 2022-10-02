@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+
+	</style>
+
+</head>
+
+<body >
+ghgjfj
+
+
+  <script>
+    //выполните функцию, которая принимает два целых числа ( a, b, где a < b) и верните массив всех целых чисел между входными параметрами, включая их.
+    
+    function between(a, b) {
+  let arr = [];
+  for (let i = a; i <= b; i++){
+    arr.push(i);
+  } return arr
+  
+}
+//between(1, 4);  // [1,2,3,4]
+
+ 
+//Создайте функцию, которая принимает 2 строковых аргумента и возвращает целое число, соответствующее количеству вхождений второго аргумента в первом. Если вхождений не найдено, должно быть возвращено число 0.
+
+
+function strCount(str, letter){  
+  let arrayFromStr = Array.from(str);
+  
+  let results = arrayFromStr.filter(item => item == letter );
+  return results.length;
+}
+//strCount('Hello', 'o'); //1
+
+
+//2-й вариант решения
+function strCounter(str, letter){  
+  let arrayFromStr = Array.from(str);
+  
+  let results = arrayFromStr.reduce((a, v) => (v === letter ? a + 1 : a), 0);
+  return results;
+}
+//strCounter('Hello', 'l'); //2
+
+//Чтобы быть Senior, представителю должно быть не менее 55 лет и иметь гандикап больше, чем 7. В этом крокетном клубе, гандикапы варьируются от -2 до +26; тем лучше игрок ниже гандикап.
+//Ввод будет состоять из списка пар. Каждая пара содержит информацию для одного потенциального члена. Информация состоит из целого числа для возраста человека и целого числа для его гандикапа.
+//Вывод будет состоять из списка строковых значений (Open или Senior), указывающих, должен ли соответствующий член быть помещен в категорию Senior или Open уровня.
+
+function openOrSenior(data){
+  let resultArray = [];
+ for (let item of data){
+  if(item[0] >= 55 && item[1] > 7){
+    resultArray.push('Senior');
+  }else {
+    resultArray.push('Open');
+  }
+
+ } return resultArray
+}
+
+openOrSenior([[45, 12],[55,21],[19, -2],[104, 20]]) //['Open', 'Senior', 'Open', 'Senior']
+
+//2-й вариант решения
+const openOrSeniorita = (data) => data.map(el => el[0]>=55 & el[1]>7 ? 'Senior' : 'Open' )
+
+
+
+//реализовать функцию разности, которая вычитает один список из другого и возвращает результат. Он должен удалить из списка все значения a, которые присутствуют в списке b, сохраняя их порядок.
+
+ const arrayDiffer = (a, b) =>  a.filter( item => !b.includes(item))
+
+//2-й вариант решения
+function arrayDiff(a, b) {
+  let arr = [];
+ for (let item of a){
+  if(!b.includes(item)){
+    arr.push(item);
+  }
+ } return arr;
+}
+
+arrayDiff([1,2], [1]);
+arrayDiff([1,2,2], [1]);
+
+
+  </script>
+
+</body>

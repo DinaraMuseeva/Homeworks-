@@ -29,6 +29,15 @@ function OutPutNum() {
 // запрашивать числа через prompt, пока пользователь не отправит пустое число или не нажмет "Отмена", затем вывести true для четных чисел и false для нечетных чисел
 
 function getTrueOrFalse() {
+	do{ num = prompt("Введите число");
+	if (isNaN(num) || num === "" || num === null)  {
+		continue
+	} else {
+		array.push(num);
+	}
+
+	} while  (num !== "" && num !== null);
+
 	for (let i = 0; i < array.length; i++) {
 		if (array[i] % 2 == 0) {
 			alert( true);

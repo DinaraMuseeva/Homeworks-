@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+
+    td select,
+    td input {
+      width: 150px;
+    }
+
+    #diagram td {
+      vertical-align: bottom;
+      text-align: center;
+      padding: 10px;
+    }
+
+    #diagram div {
+      margin: auto;
+    }
+
+	</style>
+
+</head>
+
+<body>
+
+ Депозитный калькулятор.
+
+  <form name="calculator">
+    <table>
+      <tr>
+        <td>Первоначальный депозит</td>
+        <td>
+          <input name="money" type="number" value="10000" required>
+        </td>
+      </tr>
+      <tr>
+        <td>Срок вклада?</td>
+        <td>
+          <select name="months">
+            <option value="3">3 (минимум)</option>
+            <option value="6">6 (полгода)</option>
+            <option value="12" selected>12 (год)</option>
+            <option value="18">18 (1.5 года)</option>
+            <option value="24">24 (2 года)</option>
+            <option value="30">30 (2.5 года)</option>
+            <option value="36">36 (3 года)</option>
+            <option value="60">60 (5 лет)</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Годовая процентная ставка?</td>
+        <td>
+          <input name="interest" type="number" value="5" required>
+        </td>
+      </tr>
+    </table>
+
+
+  </form>
+
+
+  <table id="diagram">
+    <tr>
+      <th>Было:</th>
+      <th>Станет:</th>
+    </tr>
+    <tr>
+      <th id="money-before"></th>
+      <th id="money-after"></th>
+    </tr>
+    <td>
+      <div style="background: red;width:40px;height:100px"></div>
+    </td>
+    <td>
+      <div style="background: green;width:40px;height:0" id="height-after"></div>
+    </td>
+  </table>
+
+
+	<script>
+   
+    
+   let form = document.forms.calculator;
+   let thBefore = document.getElementById('money-before');
+   let thAfter = document.getElementById('money-after');
+   let heightAfter = document.getElementById('height-after');
+
+// при изменении значение вызывается функция calculate
+   form.money.oninput = calculate;
+    form.months.onchange = calculate;
+    form.interest.oninput = calculate;
+
+
+  function calculate(){
+   let initial = +form.money.value; //берем значение "первоночальный депозит"
+   let interest = form.interest.value * 0.01; // значениепроцентной ставки *0,01
+   let years = form.months.value / 12; // количество месяцев / на месяцев в году 
+
+   let result = Math.round(initial * (1 + interest) ** years);
+   let height = result / form.money.value * 100 + 'px'; // вычисляем высоту стобца "станет"
+
+ 
+      thBefore.innerHTML = form.money.value;
+      thAfter.innerHTML = result; 
+      heightAfter.style.height = height;
+  }
+
+calculate();
+	</script>
+
+</body>

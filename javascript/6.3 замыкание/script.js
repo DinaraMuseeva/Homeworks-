@@ -9,13 +9,13 @@ sum(1)(2);
 
 //Фильтрация с помощью функции
 
-let arr = [1, 2, 3, 4, 5, 6, 7];
+let arr8 = [1, 2, 3, 4, 5, 6, 7];
 function inBetween(a, b) {
 	return function (item) {
 		return item >= a && item <=b;
 	}
 }
-arr.filter(inBetween(3, 6));
+arr8.filter(inBetween(3, 6));
 
 let arr = [1, 2, 3, 4, 5, 6, 7];
 function inArray(arr){

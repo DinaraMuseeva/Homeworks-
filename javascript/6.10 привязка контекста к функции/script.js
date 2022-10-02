@@ -31,11 +31,11 @@ function askPassword(ok, fail) {
 	else fail();
 }
 
-let user = {
+let user1 = {
 	name: 'John',
 
 	login(result) {
 		alert(this.name + (result ? ' logged in' : ' failed to log in'));
 	}
 };
-askPassword(() => user.login(true), () => user.login(false));
+askPassword(() => user1.login(true), () => user1.login(false));

@@ -1,0 +1,37 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <style>
+	  
+  </style>
+  
+</head>
+<body>
+
+ 
+  <script >
+// Можно ли "перевыполнить" промис?
+
+let promise = new Promise(function(resolve, reject) {
+  resolve(1);
+
+  setTimeout(() => resolve(2), 1000);
+});
+
+promise.then(alert); //1
+
+// Исполнитель должен вызвать что-то одно: resolve или reject. Состояние промиса может быть изменено только один раз.
+// Все последующие вызовы resolve и reject будут проигнорированы
+
+
+
+function delay(ms) {
+  // ваш код
+}
+
+delay(3000).then(() => alert('выполнилось через 3 секунды'));
+
+  </script>
+</body>
+</html>

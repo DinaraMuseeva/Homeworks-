@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		
+	</style>
+</head>
+
+<body>
+
+<div id="container"></div>	
+
+<script>
+let data = {
+  "Рыбы": {
+    "форель": {},
+    "лосось": {}
+  },
+
+  "Деревья": {
+    "Огромные": {
+      "секвойя": {},
+      "дуб": {}
+    },
+    "Цветковые": {
+      "яблоня": {},
+      "магнолия": {}
+    }
+  }
+};
+
+
+/*
+
+function createTree(container, obj) {
+	container.append(createElementTree(obj));
+}
+
+function createElementTree(obj) {
+
+	let ulTree = document.createElement('ul');
+
+	for (let key in obj) {
+		let li = document.createElement('li');
+		li.innerHTML = key;
+
+		let nextLi = createElementTree(obj[key]);
+		if (nextLi) li.append(nextLi);
+
+		ulTree.append(li);
+
+
+	}
+	return ulTree;
+}
+
+let container = document.getElementById('container');
+    createTree(container, data)
+
+
+
+*/
+
+
+
+function createTree(container, data) {
+	let ul = document.createElement('ul');
+	container.append(ul);
+
+
+	for (let key in data) {
+		let li = document.createElement('li')
+		li.innerHTML = key;
+
+		ul.append(li);
+
+		if (Object.keys(data[key]).length) {
+			createTree(li, data[key])
+
+		}
+	}
+}
+let container = document.getElementById('container');
+createTree(container, data);
+
+
+		
+</script>
+
+
+
+</body>
+
+</html>

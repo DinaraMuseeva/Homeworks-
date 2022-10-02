@@ -51,4 +51,5 @@ function sum(a) {
 	return f;
 }
 
-//alert( sum(5)(-1)(2) )
+console.log(+sum(1)(2)(3))
+

@@ -43,7 +43,11 @@ alert(isEmpty(schedule));
 
 */
 
-
+function multiplyNumeric(obj) {
+	for (let key in obj) {
+		obj[key]*2;
+	}return obj
+}
 // 3.Напишите код для суммирования всех зарплат и сохраните результат в переменной sum.Должно получиться 390.
 
 // Если объект salaries пуст, то результат должен быть 0.
@@ -57,6 +61,15 @@ let salaries = {
 	
 
 let sum = 0;
+
+function sunSalaries(obj) {
+	for (let key in obj) {
+		 sum = sum + obj[key];
+	  } return sum
+}
+sunSalaries(salaries)
+
+
 for (let key in salaries) {
   sum = sum + salaries[key];
 }

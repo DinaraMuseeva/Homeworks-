@@ -2,7 +2,7 @@
 
 //     1.Найти размер прокрутки снизу
 
-//const scrollBottom = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
+const scrollBottom = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
 
 //2.   Узнать ширину полосы прокрутки
 

@@ -35,9 +35,9 @@ function checkAge(age) {
 	return age > 18 || confirm('Родители разрешили?');
 	
 }
-let age = prompt("сколько лет");
+let age1 = prompt("сколько лет");
 
-if (checkAge(age)) {
+if (checkAge(age1)) {
 	alert('Доступ получен');
 } else {
 	alert('Доступ закрыт');
@@ -66,5 +66,5 @@ function pow (x,n) {
 	} 
 }
 
-let result = pow(x,n);
+let result2 = pow(x,n);
 //alert (result);

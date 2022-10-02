@@ -130,7 +130,9 @@ right: 15px;
 		if (counter < -sliderItemWidth) {
 			counter = -sliderItemWidth;
 		}
-			list.style.marginLeft = counter + 'px';
+		counter = Math.max(counter, -130 * (listLi.length - 3));
+		
+		list.style.marginLeft = counter + 'px';
 		};
 		
 	

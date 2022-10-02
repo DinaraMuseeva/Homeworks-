@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<style>
+
+	</style>
+
+</head>
+
+<body>
+
+	
+<h1>Прокрути меня</h1>
+
+	<script>
+
+
+function createDate(){
+	while(true){
+	let windowBottom = document.documentElement.getBoundingClientRect().bottom;
+      if (windowBottom > document.documentElement.clientHeight + 100) break;	
+	  let div = document.createElement('div');
+	  div.innerHTML = new Date();
+	  document.body.append(div);
+	}
+	
+}
+
+window.addEventListener('scroll', createDate)
+createDate()
+
+	</script>
+
+</body>
+
+</html>

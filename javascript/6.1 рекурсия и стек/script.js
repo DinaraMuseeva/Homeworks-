@@ -13,18 +13,14 @@ function sumTo(n){
 
 //Через рекурсию, т.к. sumTo(n) = n + sumTo(n-1) for n > 1.
 
-function sumTo(n) {
+function sumTo(n){
 	if (n == 1){
-		return 1;
-	} else{
-	let sum = 0;
-	for (let i = 1; i <= n; i++) {
-		sum =  i +sumTo(n - 1 );
-
+		return n;
+	} else {
+		return n + sumTo(n-1)
 	}
-	return sum;
-}
-}
+	}
+	
 //С использованием формулы арифметической прогрессии.
 
 function sumTo(n) {
@@ -94,3 +90,29 @@ function printList(list) {
 }
 
 printList(list)
+
+
+//Вывод односвязного списка в обратном порядке
+function printReverseList(list) {
+
+	if (list.next) {
+	  printReverseList(list.next);
+	}
+  
+	alert(list.value);
+  }
+
+// через цикл
+  function printReverseList(list) {
+	let arr = [];
+	let tmp = list;
+  
+	while (tmp) {
+	  arr.push(tmp.value);
+	  tmp = tmp.next;
+	}
+  
+	for (let i = arr.length - 1; i >= 0; i--) {
+	  alert( arr[i] );
+	}
+  }

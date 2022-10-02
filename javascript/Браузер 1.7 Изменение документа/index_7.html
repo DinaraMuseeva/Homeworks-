@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		
+	</style>
+</head>
+
+<body>
+
+
+
+<script>
+
+// 7.Напишите функцию createCalendar(elem, year, month).Вызов функции должен создать календарь для заданного месяца month в году year и вставить его в elem.
+
+//Календарь должен быть таблицей, где неделя – это < tr >, а день – это < td >.У таблицы должен быть заголовок с названиями дней недели, каждый день – <th>, первым днём недели должен быть понедельник.
+
+//createCalendar(cal, 2012, 9)
+
+
+function createCalendar(  year, month){
+
+const lastDayOfTheMonth = new Date(year, month, 0 );
+const day = lastDayOfTheMonth.getDate();
+const dayArray =[];
+for (let d = 1; d <= day; d++){
+	dayArray.push(d);
+
+}
+
+const firstDayOfTheMonth = new Date (year, month-1);
+
+
+
+function getLocalDay(firstDayOfTheMonth) {
+
+	const day = firstDayOfTheMonth.getDay();
+
+	if (day == 0) { 
+		day = 7;
+	}
+
+	return day;
+}
+
+const weekDay = getLocalDay(firstDayOfTheMonth); 
+const emptyTd =  weekDay -1 ;
+
+const weekDayLAst = getLocalDay(lastDayOfTheMonth);
+const emptyTdAtTheEnd = 7 - weekDayLAst;
+
+const table = document.createElement('table');
+document.body.append(table);
+
+let tr = document.createElement('tr');
+table.append(tr);
+
+let week = ["пн", "вт", "ср", "чт", "пт", "сб", "вс"];
+function getListContent() {
+let fragment = new DocumentFragment();
+
+
+for (let i = 0; i < week.length; i++) {
+	let th = document.createElement('th');
+	
+	th.append(week[i]);
+	fragment.append(th);
+}
+
+return fragment;
+}
+
+tr.append(getListContent()); 
+
+let trTd;
+
+trTd = document.createElement('tr');
+table.append(trTd);
+
+for (let i = 0; i < emptyTd; i++) {
+	let tdEmpty = document.createElement('td');
+
+	trTd.prepend(tdEmpty);
+}
+
+
+let counter = emptyTd;
+
+for (let i = 1 ; i <= dayArray.length ; i++) {
+	
+	if (counter == 0) {
+		trTd = document.createElement('tr');
+		table.append(trTd);
+		
+	} 
+	
+	let td = document.createElement('td');
+	td.append(i);
+	trTd.append(td);
+
+	counter++;
+
+	if (counter == 7) {
+		counter = 0;
+	}
+}
+
+for (let i = 0; i < emptyTdAtTheEnd; i++) {
+	let tdEmpty = document.createElement('td');
+
+	tdEmpty.append();
+	trTd.append(tdEmpty);
+}
+
+
+}
+createCalendar(2012, 11);
+		
+</script>
+
+
+
+</body>
+
+</html>

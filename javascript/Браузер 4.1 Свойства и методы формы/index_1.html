@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+
+	</style>
+
+</head>
+
+<body>
+
+	
+		<select id="genres">
+			<option value="rock">Рок</option>
+			<option value="blues" selected>Блюз</option>
+		  </select>
+
+
+
+	<script>
+
+
+// Выведите значение и текст выбранного пункта.
+let selectedOption = genres.options[genres.selectedIndex];
+let selectValue  = selectedOption.value;
+let selectText = selectedOption.text;
+
+// Добавьте пункт: <option value="classic">Классика</option>.
+// Сделайте его выбранным.
+let option = new Option("Классика", "classic", true, true);
+genres.append(option);
+
+
+
+	</script>
+
+</body>
+
+</html>

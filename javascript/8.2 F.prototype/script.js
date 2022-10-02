@@ -6,9 +6,9 @@ Rabbit.prototype = {
 	eats: true
 };
 
-let rabbit = new Rabbit();
+let rabbitе= new Rabbit();
 
-alert(rabbit.eats); // true
+alert(rabbitе.eats); // true
 
 
 
