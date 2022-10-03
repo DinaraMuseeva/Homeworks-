@@ -9,52 +9,49 @@
 
 </head>
 
-<body >
-  <div class="container">
-    <h1 class="title"> Today</h1>
-    
-    <ul class="todo__list">
-      <li class="todo__checkbox">
-        <input type="checkbox" class="todo-done" value="0"/>       
-         <div class="todo-item"> Lorem ipsum dolor sit amet consectetur adipisicing elit.
-         </div>
-       
-      </li>     
-  
-    </ul>
+<body>
+	<div class="container">
+		<h1 class="title"> Today</h1>
 
-    <button  class="todo__add" > <img src="/img/Vector.png" alt="">
-    </button>
+		<ul class="todo__list">
+		</ul>
 
-      
-    <template id="todo-template">
-      <div class="todo__checkbox">
-       
-        <div class="todo-item"></div>
-        <input type="button" class="todo-done" value="&#10004;"/>
-      </div>
-      </template>
-  </div>
-
-  <div class=" modal-container"   >
-    <form class="modal-form">
-      <h1 class="title"> Add a task</h1>
-      <label >
-        <span class="text">Name</span> 
-        <input id = "modal-input" class="modal__text" type="text" placeholder="Введите задачу" required>
-      </label>
-      
-      <label>
-        <input   id="modal-save"class ="modal__button" type="submit" value="Done" Done>
-      </label>
-      
-
-    </form>
-  
-  </div>
-  
+		<button class="todo__add">
+			<img src="/img/Vector.png" alt="">
+		</button>
 
 
-  <script src="./main.js"></script>
+		<template id="todo-template">
+			<li class="todo__checkbox">
+				<input type="checkbox"  id="todo-done"  />
+				<div class="todo-item">
+
+				</div>
+
+			</li>
+		</template>
+	</div>
+
+	<div class=" modal-container">
+		<form class="modal-form">
+			<h1 class="title"> Add a task</h1>
+			<img class ="modal-close" src="/img/cross-svgrepo-com.svg" alt="">
+			<label>
+				<span class="text">Name</span>
+				<input id="modal-input" class="modal__text" type="text" placeholder="Введите задачу" required>
+			</label>
+
+			<label>
+				<input id="modal-save" class="modal__button" type="submit" value="Done" Done>
+			</label>
+
+
+		</form>
+
+	</div>
+
+
+
+	<script src="./main.js"></script>
 
 </body>

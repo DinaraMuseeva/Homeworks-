@@ -5,116 +5,100 @@
 // - запилить функционал добавления элемента в массив по нажатию на кнопку
 */
 
+
+// Создаем подложку и модальное окно по крику на  плюсик
 let modalContainer = document.querySelector('.modal-container');
 
 let modalForm = document.querySelector('.modal-form');
 
 let todoAdd = document.querySelector('.todo__add');
 
-todoAdd.addEventListener("click", (e) =>{
-    e.preventDefault();
-    modalContainer.classList.add("active");
-    
+let modalClose = document.querySelector('.modal-close');
+
+todoAdd.addEventListener("click", (e) => {
+	e.preventDefault();
+	modalContainer.classList.add("active");
+
 })
-document.addEventListener( "click", (e) => {
-    if(e.target === modalContainer){
-        modalContainer.classList.remove("active");  
-    }
+document.addEventListener("click", (e) => {
+	if (e.target === modalContainer) {
+		modalContainer.classList.remove("active");
+	}
+})
+document.addEventListener("click", (e) => {
+	if (e.target === modalClose) {
+		modalContainer.classList.remove("active");
+	}
 })
 
-// let modalButton = document.querySelector('.modal__button');
+
+const toDoList = {
+
+	data: [], // масиив
+	hAdd: null, // input для ввода задачи 
+	hTemplate: null, //  todoitem в template
+	hList: null, // список задач
+	init: () => {
+
+		if (localStorage.toDoList == undefined) {
+			localStorage.toDoList = "[]";
+		}
+	 
+		toDoList.data = JSON.parse(localStorage.toDoList);
+
+		toDoList.hAdd = document.getElementById("modal-input");
+
+		toDoList.hTemplate = document.getElementById("todo-template").content;
+
+		toDoList.hList = document.querySelector(".todo__list");
 
 
-// function newElement() {
-//   let li = document.createElement("li");
-//   li.className ="todo__checkbox";
+		document.querySelector(".modal-form").onsubmit = toDoList.add;
 
-//   let checkbox = document.createElement("input");
-//   checkbox.type = "checkbox";
-//   let ulList = document.querySelector('.todo__list')
 
-//   let inputValue = document.getElementById("modal-input").value;
+		toDoList.draw();
+	},
 
-//   let t = document.createTextNode(inputValue);
-//   li.appendChild(t);
+	// создаем ту ду лист
+	draw: () => {
+		// перезагрузить ту-ду лист 
+		toDoList.hList.innerHTML = "";
 
-  
-//   ulList.appendChild(li);
-//   li.prepend(checkbox);
+		// создаем копию блока todo.hTemplate 
+		if (toDoList.data.length > 0) {
+			for (let title in toDoList.data) {
+				let row = toDoList.hTemplate.cloneNode(true);
+				row.querySelector(".todo-item").textContent = toDoList.data[title][0];
 
-//  document.getElementById("myInput").value = "";
-// todos.push(li);
-// }
+				row.getElementById("todo-done").onclick = () => {
+					toDoList.data[title][1] = !toDoList.data[title][1];
+					toDoList.save();
+				};
 
-var todo = {
-    
-    data : [], // todo list data array
-    hAdd : null, // html add item text field
-    hTemplate : null, // html item row template
-    hList : null, // html to do list
-    init : () => {
-      
-      if (localStorage.todo == undefined) { 
-        localStorage.todo = "[]"; 
-    }
-    //Восстановить предыдущию сессию 
-      todo.data = JSON.parse(localStorage.todo);
+				
+				if (toDoList.data[title][1]) {
+					row.querySelector(".todo-item").classList.add("todo__item-done");
+					
+				}
+				toDoList.hList.appendChild(row);
+			}
+		}
+	},
+	save: () => {
+		localStorage.toDoList = JSON.stringify(toDoList.data);
+		toDoList.draw();
+	},
 
-      todo.hAdd = document.getElementById("modal-input");
-      todo.hTemplate = document.getElementById("todo-template").content;
-      todo.hList = document.querySelector(".todo__list");
-  
-      
-      document.querySelector(".modal-form").onsubmit = todo.add;
-  
-      
-      todo.draw();
-    },
-  
-    // (B) DRAW TO DO LIST
-    draw : () => {
-      // перезагрузить ту-ду лист 
-      todo.hList.innerHTML = "";
-  
-      // (B2) LOOP & GENERATE ROWS
-      if (todo.data.length > 0) {
-         for (let id in todo.data) {
-        let row = todo.hTemplate.cloneNode(true);
-        row.querySelector(".todo-done").onclick = () => { todo.toggle(id); };
-        row.querySelector(".todo-item").textContent = todo.data[id][0];
-        
-       
-        if (todo.data[id][1]) {
-          row.querySelector(".todo-item").classList.add("todo__item-done");
-        }
-        todo.hList.appendChild(row);
-      }}
-    },
-  
-    // (C) HELPER - SAVE DATA INTO LOCAL STORAGE
-    save: () => {
-      localStorage.todo = JSON.stringify(todo.data);
-      todo.draw();
-    },
-  
-    // (D) ADD A NEW ITEM TO THE LIST
-    add : () => {
-      todo.data.push([todo.hAdd.value, false]);
-      todo.hAdd.value = "";
-      todo.save();
-      return false;
-    },
-  
-    // (E) UPDATE TODO ITEM DONE/NOT YET
-    toggle: (id) => {
-      todo.data[id][1] = !todo.data[id][1];
-      todo.save();
-    },
-  
- 
-  };
-  
-  // (G) PAGE INIT
-  window.addEventListener("load", todo.init);
-  
+	// Добавляем задание в массив
+	add: () => {
+		toDoList.data.push([toDoList.hAdd.value, false]);
+		toDoList.hAdd.value = "";
+		toDoList.save();
+		return false;
+	},
+};
+
+
+window.addEventListener("load", toDoList.init);
+
 
