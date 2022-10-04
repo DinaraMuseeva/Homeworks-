@@ -70,14 +70,18 @@ const toDoList = {
 				let row = toDoList.hTemplate.cloneNode(true);
 				row.querySelector(".todo-item").textContent = toDoList.data[title][0];
 
-				row.getElementById("todo-done").onclick = () => {
+
+				row.getElementById("todo-done").addEventListener("click", () => {
+					
 					toDoList.data[title][1] = !toDoList.data[title][1];
-					toDoList.save();
-				};
+					
+				 	toDoList.save();
+				})
 
 				
-				if (toDoList.data[title][1]) {
+				if (toDoList.data[title][1]) { 
 					row.querySelector(".todo-item").classList.add("todo__item-done");
+					row.querySelector(".input").classList.add("input-done");
 					
 				}
 				toDoList.hList.appendChild(row);

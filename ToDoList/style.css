@@ -147,11 +147,37 @@ body {
 
 }
 
-input[type="checkbox"] {
-	margin-right: 5px;
+.input {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	background: #FFFFFF;
+	border: 2px solid #E8E8E8;
+	border-radius: 6px;
+	margin-right: 10px;
+	cursor: pointer;
+
 	
 }
 
+.input-done{
+	background-color: #000;
+	border: 2px solid #000;
+} 
+.input-done:after{
+	content: "";
+	position: absolute;
+	left: 6px;
+	top: 3px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+		
+}
 /* =====INPUT======= */
 
 .modal-container {
